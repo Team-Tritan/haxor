@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>not a haxor !!</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      #message {
+        font-family: Arial;
+        font-size: 20px;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      #buttonContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #loadingBar {
+        width: 200px;
+        height: 20px;
+        border: 1px solid #ccc;
+        background-color: #f2f2f2;
+        margin-bottom: 20px;
+      }
+      #progressBar {
+        height: 100%;
+        background-color: #6f43c7;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="message">I bet you won't do the thing</div>
+    <div id="smol"></div>
+
+    <div id="buttonContainer">
+      <button id="button">do it</button>
+    </div>
+
+    <div id="loadingBar" style="display: none">
+      <div id="progressBar"></div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        let button = document.getElementById("button");
+        let smol = document.getElementById("smol");
+        let message = document.getElementById("message");
+
+        let loadingBar = document.getElementById("loadingBar");
+        let progressBar = document.getElementById("progressBar");
+
+        button.addEventListener("click", function () {
+          button.style.display = "none";
+          message.textContent = "";
+
+          loadingBar.style.display = "block";
+
+          let width = 0;
+          let interval = setInterval(() => {
+            width += 20;
+            progressBar.style.width = width + "%";
+
+            if (width >= 100) {
+              clearInterval(interval);
+
+              loadingBar.style.display = "none";
+              message.textContent = "You have a tiny cock";
+              smol.textContent = "I haxor you computor :)";
+            }
+          }, 1000);
+        });
+      });
+    </script>
+  </body>
+</html>
